@@ -1,0 +1,164 @@
+// @font-face {font-family: "iconfont";
+//        src: url('iconfont.eot'); /* IE9*/
+//        src: url('iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//        url('iconfont.woff') format('woff'), /* chrome, firefox */
+//        url('iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+//        url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+//      }
+.index{ 
+    background-color: #f0f1f2; 
+    width: 100%;
+    overflow-y: scroll;
+     @include flexbox();
+     @include flex-direction(column);
+     
+
+     .indexbanner{
+         @include flexbox();
+         height: 1.5rem;
+         width: 3.5rem;
+         margin: 10px auto;        
+         .mtswipe{
+             width: 100%;
+             height: 100%;
+             .mtswipeitem{
+                width: 100%;
+                height: 100%; 
+                img{
+                    width: 3.5rem;
+                    height: 1.50rem;
+                }
+             } 
+                       
+         }         
+ } 
+   .search{
+       width: 3.5rem;
+       height: .3rem;
+       margin: .03rem auto;
+       text-align: center;
+       background-color: white;
+       border-radius:5px ;
+       line-height: .3rem;
+       color: #969ba3;
+   } 
+   .myindex{      
+       width: 100%;
+       height: .8rem;
+       margin-top: 5px;
+       background-color: white;
+       @include flexbox();
+     
+       .listindex{
+                 @include flex();         
+                 @include flexbox() ;
+                 @include align-items(center);
+                 @include justify-content(center);  
+            .list{  
+                @include flex();
+                text-align: center;                            
+                 div{
+                     margin: 0 auto;
+                       width: .52rem;
+                       height: .52rem;
+                       
+                   } 
+                   p{
+                       font-size:12px ;
+                   }
+                }   
+       }
+        
+   }
+   .avd{
+       width: 3.4rem;
+       height: .52rem;
+       margin: 10px auto;
+       img{
+           width: 100%;
+           height: 100%;
+       }
+   }
+   .bookscroll{     
+       width: 100%;
+       height: 2rem;
+       background-color: white;
+       .select{
+           height: .3rem;
+           width: 3.4rem;
+           @include flexbox();
+           margin: 0 auto;
+           margin-bottom:.2rem ;
+           background-color: white;
+           .Rankingselect1{
+               height: 100%;
+               @include flex();
+               @include border(1px,#ed424b,solid,3px);
+               text-align: center;
+               line-height: .3rem;
+               color: #ed424b;
+           }
+       }
+       .bookscrollheader{
+          margin-top: .1rem;
+          padding-left: .10rem;
+          @include flexbox();
+          width: 100%;
+          height: .34rem;
+          position: relative; 
+          h3{
+              font-family: FZZCYSK;
+              font-weight: bolder;           
+              color: #33373d;
+              padding-left: .1rem;
+              width: .75rem;
+              height: .20rem;
+              @include border(0 0 0 4px,#ed424b,solid);
+          }
+          span{
+              margin-left: .15rem;
+              color:#969ba3;
+              display: block;
+              @include flex();
+          }
+          .more{
+              width: .5rem;
+              position: absolute;
+              right: .15rem;
+          }
+       }    
+   }
+   .groom{
+       width: 3.43rem;
+       height: .3rem;
+       margin: .15rem auto;
+       @include flexbox();
+       .groomleft{
+           
+           text-align: center;
+           line-height: .3rem;
+           @include flex();
+           @include border(1px,#ed424b,solid,100px);
+           span{
+               color: #ed424b;
+           }
+       }
+       .groomright{
+           margin-left: 5px;
+           text-align: center;
+           line-height: .3rem;
+           @include flex();
+           @include border(1px,#ed424b,solid,100px);
+           span{
+               color: #ed424b;
+           }
+       }
+       
+   }
+   
+}
+
+
+            
+  
+ 

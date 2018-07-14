@@ -1,21 +1,49 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
+import index from './views/index.vue'
+import classification from './views/classification.vue'
+import Free from './views/Free.vue'
+import Okami from './views/Okami.vue'
+import ranking from './views/ranking.vue'
+import overwrite from './views/overwrite.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: '/',    
+      redirect:'/index'
     },
     {
-      path: '/about',
-      name: 'about',
-      component: About
+      path: '/index',
+      name: 'index',
+      component: index
+    },
+    {
+    	path:'/classification',
+    	name:'classification',
+    	component:classification
+    },
+     {
+    	path:'/Free',
+    	name:'Free',
+    	component:Free
+    },
+     {
+    	path:'/overwrite',
+    	name:'overwrite',
+    	component:overwrite
+    },
+     {
+    	path:'/Okami',
+    	name:'Okami',
+    	component:Okami
+    },
+    {
+    	path:'/ranking',
+    	name:'ranking',
+    	component:ranking
     }
   ]
 })
