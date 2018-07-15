@@ -1,24 +1,24 @@
 <template>
 	<div class="bookulmax">
-		<div class="bookulli">
+		<div class="bookulli" v-for="(bookul,index) of bookul" :key='index'>
 			<div class="bookulimg">
-				<img src="https://qidian.qpic.cn/qdbimg/349573/1012029980/150"/>
+				<img :src="bookul.bookimg"/>
 			</div>
 			<div class="bookulcenter">
 				<span class="textname">
-					{{textname}}
+					{{bookul.textname}}
 				</span>
 				<p>
-					{{textbody}}
+					{{bookul.textbody}}
 				</p>
 				<div class="textfooter">
 					<div class="footerleft">
 						<i class="fa fa-user-o" aria-hidden="true"></i>	
-						{{bookuser}}
+						{{bookul.bookuser}}
 					</div>
 						<div class="footerright">
-							<span>{{bookclass}}</span><span>{{booktype}}</span>
-							<span>{{bookfont}}</span>
+				<span>{{bookul.bookclass}}</span><span>{{bookul.booktype}}</span>
+							<span>{{bookul.bookfont}}</span>
 						</div>
 					</div>
 				
@@ -31,16 +31,12 @@
 <script>
 	export default{
 		name:'bookul',
-		data(){
-			return {
-				textname:"恶魔就在身边",
-				textbody:'sjckaclaksjca',
-				bookuser:'作者',
-				bookclass:'都市',
-				booktype:'连载',
-				bookfont:'73.56万字'
+		props:{
+			bookul:{
+				required:true
 			}
 		}
+
 	}
 </script>
 

@@ -3,6 +3,10 @@
   "/api/booklist3":"/booklist3",
   "/api/booklist2":"/booklist2",
   "/api/booklist":"/booklist",
-  "/api/newbook":"/newbook"
+  "/api/newbook":"/newbook",
+  "/api/bookul1":"/bookul1",
+  "/api/bookul2":"/bookul2",
+  "/api/classification1":"/classification1",
+  "/api/classification2":"/classification2"
   
 }

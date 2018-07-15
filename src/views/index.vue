@@ -80,13 +80,53 @@
 			<img src="https://qidian.qpic.cn/qidian_common/349573/0f75fc58cca1708aacc746fe09e0153e/0" />
 		</div>
 		
-		<div class="bookscroll">
+		<div class="bookscroll" style="height: 4rem; ">
 			<div class="bookscrollheader">
 				<h3>新书抢先</h3><span>24小时热销新书</span><span class="more">更多></span>
 			</div>
 			
-		   <bookul/>
+		   <bookul :bookul='bookul1'/>
 		</div>
+			<div class="bookscroll" style="height: 4rem;margin-top: .2rem;">
+			<div class="bookscrollheader">
+				<h3>畅销完本</h3><span>一周热销完本书</span><span class="more">更多></span>
+			</div>
+			
+		   <bookul :bookul='bookul2'/>
+		</div>
+		
+		<div class="bookscroll" style="overflow: hidden; margin-top: 20px; height: 4.7rem;">
+			<div class="bookscrollheader ">
+				<h3>分类推荐</h3><span>频道主编推荐</span><span class="more">更多></span>
+			</div>
+			<div class="select">
+				<div class="Rankingselect1 active"><span>
+					玄幻奇幻
+				</span></div>
+				<div class="Rankingselect1"><span>
+					武侠仙侠
+				</span></div>
+				<div class="Rankingselect1"><span>
+					都市职场
+				</span></div>
+				
+			</div>
+		   <mybooklist  :booklist = 'classification1'/>
+		   <div class="select" style="margin-top: .1rem; ">
+				<div class="Rankingselect1 active"><span>
+					历史军事
+				</span></div>
+				<div class="Rankingselect1"><span>
+					游戏体育
+				</span></div>
+				<div class="Rankingselect1"><span>
+					科幻灵异
+				</span></div>
+				
+			</div>
+		   <mybooklist  :booklist = 'classification2'/>
+		</div>
+		
 	</div>
 	
 </template>
@@ -124,7 +164,11 @@
 					}],
 					booklist:[],
 					booklist2:[],
-					booklist3:[]
+					booklist3:[],
+					bookul1:[],
+					bookul2:[],
+					classification1:[],
+					classification2:[]
 					
 			}			
 		},
@@ -144,14 +188,29 @@
 		mounted(){
 			$.get('http://localhost:9000/booklist').then((result)=>{
 				this.booklist = result.data.data;
-				console.log(this.booklist)
-				
+				//console.log(this.booklist)				
 			}),
 			$.get('http://localhost:9000/booklist2').then((result)=>{
 				this.booklist2 = result.data.data
 			}),
 			$.get('http://localhost:9000/booklist3').then((result)=>{
 				this.booklist3 = result.data.data
+			})
+			$.get('http://localhost:9000/bookul1').then((result)=>{
+				//console.log(result.data.data)
+				this.bookul1 = result.data.data
+			})
+			$.get('http://localhost:9000/bookul2').then((result)=>{
+				//console.log(result.data.data)
+				this.bookul2 = result.data.data
+			})
+			$.get('http://localhost:9000/classification1').then((result)=>{
+				//console.log(result.data.data)
+				this.classification1 = result.data.data
+			})
+			$.get('http://localhost:9000/classification2').then((result)=>{
+				//console.log(result.data.data)
+				this.classification2 = result.data.data
 			})
 			
 		}
