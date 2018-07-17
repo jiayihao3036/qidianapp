@@ -41,7 +41,5 @@
 </script>
 
 <style lang="scss" scoped>
-		@import '../../style/model/bookul';
-		
-		
+		@import '../../style/model/bookul';		
 </style>

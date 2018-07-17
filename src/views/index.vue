@@ -161,14 +161,10 @@
 						indeximg:"background:url('https://qidian.gtimg.com/qdm/icon/common/sprite@2x.f5569.png')no-repeat   -60px -60px; ",
 						indexp:'大神',
 						path:'/Okami'
-					}],
-					booklist:[],
-					booklist2:[],
-					booklist3:[],
-					bookul1:[],
-					bookul2:[],
-					classification1:[],
-					classification2:[]
+					}],					
+					
+			
+					
 					
 			}			
 		},
@@ -185,33 +181,38 @@
      		bookul,
      		appheader
   		},
+  		computed:{
+			booklist(){
+				let data = this.$store.state.booklist.booklist;
+				return [...data]  					
+			},
+			booklist2(){
+				let data = this.$store.state.booklist.booklist2;
+				return data  					
+			},
+			booklist3(){
+				let data = this.$store.state.booklist.booklist3;
+				return [...data]  					
+			},
+			bookul1(){
+				let data = this.$store.state.booklist.bookul1;
+				return [...data]  					
+			},
+			bookul2(){
+				let data = this.$store.state.booklist.bookul2;
+				return [...data]  					
+			},
+			classification1(){
+				let data = this.$store.state.booklist.classification1;
+				return [...data]  					
+			},
+			classification2(){
+				let data = this.$store.state.booklist.classification2;
+				return [...data]  					
+			}
+  		},
 		mounted(){
-			$.get('http://localhost:9000/booklist').then((result)=>{
-				this.booklist = result.data.data;
-				//console.log(this.booklist)				
-			}),
-			$.get('http://localhost:9000/booklist2').then((result)=>{
-				this.booklist2 = result.data.data
-			}),
-			$.get('http://localhost:9000/booklist3').then((result)=>{
-				this.booklist3 = result.data.data
-			})
-			$.get('http://localhost:9000/bookul1').then((result)=>{
-				//console.log(result.data.data)
-				this.bookul1 = result.data.data
-			})
-			$.get('http://localhost:9000/bookul2').then((result)=>{
-				//console.log(result.data.data)
-				this.bookul2 = result.data.data
-			})
-			$.get('http://localhost:9000/classification1').then((result)=>{
-				//console.log(result.data.data)
-				this.classification1 = result.data.data
-			})
-			$.get('http://localhost:9000/classification2').then((result)=>{
-				//console.log(result.data.data)
-				this.classification2 = result.data.data
-			})
+
 			
 		}
 

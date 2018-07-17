@@ -3,12 +3,20 @@
 </template>
 
 <script>
+	import {mapActions} from 'vuex'
   export default {
-    data: function () {
-      return {
-
-    }
-  }
+//  data: function () {
+//    return {
+//
+//  }
+//}
+		methods:{
+			...mapActions(['getdata'])
+			
+		},
+		created(){
+			this.getdata()
+		}
    }
 </script>
 <style lang="scss">
