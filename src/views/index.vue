@@ -191,9 +191,9 @@
 					}],										
 			}			
 		},
-		methods:{
-		
+		methods:{		
 			handlechange(){
+			
 				        if(this.payload==27){
 				        	this.payload = -3
 				        }
@@ -251,14 +251,11 @@
 				return [...data]  					
 			},
 			Quadratic(){
-				let data = this.$store.state.booklist.Quadratic;
-				
+				let data = this.$store.state.booklist.Quadratic;				
 				this.mygass  = this.$store.getters.filter(0)
-				if(this.mygass[0]==undefined){
-					 this.mygass=[]
-				}else{
-					this.mygass
-				}
+//				if(this.mygass[0]==undefined){
+//					this.mygass  = this.$store.getters.filter(0) 
+//				}
 				return [...data]  					
 			}
 						

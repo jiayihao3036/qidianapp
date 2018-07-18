@@ -39,7 +39,7 @@
         data(){
             return {
                 booklist11:[],
-                booklist22:[],
+                bookul22:[]
             }
         },
         components:{
@@ -50,7 +50,7 @@
           mounted(){
 			$.get('http://localhost:9000/booklist').then((result)=>{
 				this.booklist11 = result.data.data;				
-            })
+           });
             $.get('http://localhost:9000/bookul2').then((result)=>{
 				this.bookul22 = result.data.data
 			})
