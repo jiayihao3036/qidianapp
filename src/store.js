@@ -12,7 +12,9 @@ export default new Vuex.Store({
 					bookul1:[],
 					bookul2:[],
 					classification1:[],
-					classification2:[]
+					classification2:[],
+					Quadratic:[],
+					gass:[]
 		}
   },
   mutations: {
@@ -24,7 +26,19 @@ export default new Vuex.Store({
 				state.booklist.bookul2 = payload[4].data.data;
 				state.booklist.classification1=payload[5].data.data;
 				state.booklist.classification2=payload[6].data.data;
+				state.booklist.Quadratic=payload[7].data.data;
+				state.booklist.gass=payload[8].data.data;
 			}
+  },
+  getters:{
+  	filter:(state)=>(payload)=>{
+  		var arr = [];
+  		var payload=payload ? payload : 0;
+  		for(var i = payload;i<payload+3;i++){
+  			 arr.push(state.booklist.gass[i])
+  		} 
+  		return arr
+  	}
   },
   actions: {
 			getdata({commit}){
@@ -37,15 +51,15 @@ $.get('http://localhost:9000/bookul1').then((result)=>result)
 $.get('http://localhost:9000/bookul2').then((result)=>result)
 				const classification1 = $.get('http://localhost:9000/classification1').then((result)=>result)
 				const classification2 = $.get('http://localhost:9000/classification2').then((result)=>result)
-				
-				Promise.all([booklist,booklist2,booklist3,bookul1,bookul2,classification1,classification2])
+				const Quadratic = $.get('http://localhost:9000/Quadratic').then((result)=>result)
+				const gass = 
+				$.get('http://localhost:9000/gass').then((result)=>result)				
+				Promise.all([booklist,booklist2,booklist3,bookul1,bookul2,classification1,classification2,Quadratic,gass])
 			.then((result)=>{
 				commit('setdata',result)
 			})
 			}
 			
   }
-//getters:{
-//	
-//}
+
 })

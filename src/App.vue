@@ -26,10 +26,14 @@
 		    height: 100%;
 		    margin: 0;
 		    padding: 0;
-		    overflow-y: scroll;
-		       
+		    overflow-y: scroll;	
+		    img{
+		    	background-image: url("https://qidian.gtimg.com/qdm/img/book-cover.c977e.svg");
+		    
+		    } 		
 		}
-
+		
+			     
 
 </style>
 

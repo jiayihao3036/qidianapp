@@ -66,7 +66,9 @@
 <style lang="scss" scoped>
 		@import '../../style/usage/core/reset';
 	  .bookscrollbody{
-	  	@include flexbox();  
+	  	overflow:hidden;
+	  	@include flexbox();
+	  	  
 	  	.booklistmax{
 	  		
 	  		 padding-left: .10rem;

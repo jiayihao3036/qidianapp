@@ -7,6 +7,7 @@
   "/api/bookul1":"/bookul1",
   "/api/bookul2":"/bookul2",
   "/api/classification1":"/classification1",
-  "/api/classification2":"/classification2"
-  
+  "/api/classification2":"/classification2",
+  "/api/Quadratic":"/Quadratic",
+  "/api/gass":"/gass"
 }

@@ -125,22 +125,49 @@
 				
 			</div>
 		   <mybooklist  :booklist = 'classification2'/>
+		   
+		   
+		   <div class="bookscroll" style="height: 4rem;margin-top: .2rem;">
+			<div class="bookscrollheader">
+				<h3>畅销完本</h3><span>一周热销完本书</span><span class="more">更多></span>
+			</div>
+			
+		   <bookul :bookul='bookul2'/>
+		</div>
+		</div>
+		   <div class="bookscroll" style="height: 2rem;margin-top: .2rem;">
+			<div class="bookscrollheader">
+				<h3>二次元</h3><span class="more">更多></span>
+			</div>
+			<mybooklist :booklist = 'Quadratic'/>
 		</div>
 		
+		<div class="bookscroll" style="height: 4rem;margin-top: .2rem;">
+			<div class="bookscrollheader">
+				<h3>猜你喜欢</h3><span class="more" :class="{spanhover:isselect}" 
+					style="width: .7rem;" @click="handlechange()">
+						<i  class="fa fa-refresh" 						aria-hidden="true"></i>
+					&nbsp;&nbsp;换一批</span>
+			</div>			
+		 <gassul :bookul='mygass'/>
+		</div>
 	</div>
 	
 </template>
 <script>
 	import bookul from '../components/bookul/bookul';
+	import gassul from '../components/gassul/gassul';
 	import mybooklist from '../components/booklistscroll/listscroll';
 	import appheader from '../components/appheader/appheader';
 	import $ from 'axios';
 	import { Swipe, SwipeItem } from 'mint-ui'
 	export default {
 		name:"index",
-		data(){
-			
-			return {
+		data(){			
+			return {	
+				    payload :0,
+					isselect:false,
+					mygass:[],
 					dataindex:[{
 						indeximg:"background:url('https://qidian.gtimg.com/qdm/icon/common/sprite@2x.f5569.png')no-repeat   -125px -55px; ",
 						indexp:'分类',
@@ -161,14 +188,26 @@
 						indeximg:"background:url('https://qidian.gtimg.com/qdm/icon/common/sprite@2x.f5569.png')no-repeat   -60px -60px; ",
 						indexp:'大神',
 						path:'/Okami'
-					}],					
-					
-			
-					
-					
+					}],										
 			}			
 		},
 		methods:{
+		
+			handlechange(){
+				        if(this.payload==27){
+				        	this.payload = -3
+				        }
+						this.payload+=3
+						this.isselect=true
+						var change = setInterval(function(){					
+							this.isselect = false
+							clearInterval(change)
+						}.bind(this),500);						
+						let data =  this.$store.getters.filter(this.payload);
+						//console.log(this.payload)
+						this.mygass = data
+					
+				},
 			handelindex(path){
 				this.$router.push({path})
 				
@@ -179,7 +218,8 @@
      		'mt-swipe-item': SwipeItem,
      		mybooklist,
      		bookul,
-     		appheader
+     		appheader,
+     		gassul
   		},
   		computed:{
 			booklist(){
@@ -209,12 +249,33 @@
 			classification2(){
 				let data = this.$store.state.booklist.classification2;
 				return [...data]  					
+			},
+			Quadratic(){
+				let data = this.$store.state.booklist.Quadratic;
+				
+				this.mygass  = this.$store.getters.filter(0)
+				if(this.mygass[0]==undefined){
+					 this.mygass=[]
+				}else{
+					this.mygass
+				}
+					
+				
+				console.log(this.mygass)
+				return [...data]  					
 			}
-  		},
-		mounted(){
-
 			
-		}
+			
+			
+			
+						
+  		},
+  		
+		mounted(){
+			
+			
+		},
+		
 
 	}
 </script>

@@ -1,6 +1,6 @@
 <template>
 		<div class="indexheader">
-			<div class="h1"><img width="90px" height="18px" src="../../assets/imges/logo-qdm.02fc8.svg" /></div> 
+			<div class="h1"><img width="90px" height="18px" src="../../assets/imges/logo-qdm.02fc8.svg" style="background:transparent;" /></div> 
 			<div class="sex">
 				<span class="man active">男生</span>
 				<span class="woman">女生</span>

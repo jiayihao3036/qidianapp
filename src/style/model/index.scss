@@ -11,8 +11,7 @@
     overflow-y: scroll;
      @include flexbox();
      @include flex-direction(column);
-     
-
+   
      .indexbanner{
          @include flexbox();
          height: 1.5rem;
@@ -27,6 +26,7 @@
                 img{
                     width: 3.5rem;
                     height: 1.50rem;
+                    
                 }
              } 
                        
@@ -131,6 +131,21 @@
               position: absolute;
               right: .15rem;
           }
+          .spanhover{            
+              animation: myfirst 0.5s;
+              i{
+                  //display: block;
+                  transform: rotate(180deg);
+                  transition: all 0.5s;
+              }
+          }
+         
+            
+          @keyframes myfirst
+            {
+                0%   {background:gainsboro;}            
+                100% {background:white;}
+            }
        }    
    }
    .groom{

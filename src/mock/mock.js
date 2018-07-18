@@ -7,6 +7,8 @@ const bookul1 = require('./bookul1.json')
 const bookul2 = require('./bookul2.json')
 const classification1 = require('./classification1.json')
 const classification2 = require('./classification2.json')
+const Quadratic = require('./Quadratic.json')
+const gass = require('./gass')
 module.exports = function () {
   return {
     "booklist2":booklist2,
@@ -16,7 +18,9 @@ module.exports = function () {
     "bookul2":bookul2,
     "classification1":classification1,
      "classification2":classification2,
-    "newbook":newbook
+    "newbook":newbook,
+    "Quadratic":Quadratic,
+    "gass":gass
     
   }
 }
