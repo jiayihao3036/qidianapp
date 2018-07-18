@@ -259,15 +259,8 @@
 				}else{
 					this.mygass
 				}
-					
-				
-				console.log(this.mygass)
 				return [...data]  					
 			}
-			
-			
-			
-			
 						
   		},
   		
