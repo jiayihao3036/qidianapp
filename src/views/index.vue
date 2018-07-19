@@ -1,5 +1,6 @@
 <template>
-	<div class="index">
+	<div class="index" >
+
 	<appheader />
 		<div class="indexbanner">
 		
@@ -52,7 +53,11 @@
 		</div>
 		<div class="bookscroll" style="overflow: hidden;">
 			<div class="bookscrollheader">
-				<h3>限时免费</h3><span></span>
+				<h3>限时免费</h3><span class="time"><span class="hour">{{hour}}</span>
+				<span>:</span><span class="min"><i v-if="minshow0">0</i>{{min}}</span><span>:</span><span class="second">
+				  <i v-if="show0">0</i>{{second}}
+				</span>
+				</span>
 			</div>
 		   <mybooklist isfree='true' :booklist = 'booklist2'/>
 		</div>	
@@ -146,26 +151,48 @@
 			<div class="bookscrollheader">
 				<h3>猜你喜欢</h3><span class="more" :class="{spanhover:isselect}" 
 					style="width: .7rem;" @click="handlechange()">
-						<i  class="fa fa-refresh" 						aria-hidden="true"></i>
+						<i  class="fa fa-refresh" aria-hidden="true"></i>
 					&nbsp;&nbsp;换一批</span>
 			</div>			
 		 <gassul :bookul='mygass'/>
 		</div>
+		
+		<div class="bookscroll" style="height: 2rem;margin-top: .2rem;">
+			<div class="bookscrollheader">
+				<h3>精选专题</h3>
+			</div>			
+		    <adv/>
+		</div>
+		<div class="foot">copyright © 2002-2018 m.qidian.com</div>
+			<transition name='fade'>
+				<div v-if="show"  class="gotop" @click="handlegotop" >
+						<i class="fa fa-chevron-up" aria-hidden="true"></i>
+				</div>
+			</transition>
 	</div>
 	
 </template>
 <script>
+	
 	import bookul from '../components/bookul/bookul';
 	import gassul from '../components/gassul/gassul';
 	import mybooklist from '../components/booklistscroll/listscroll';
 	import appheader from '../components/appheader/appheader';
-	import $ from 'axios';
+	import adv from '../components/adv/adv';
+	// import $ from 'axios';
+	import $ from 'jquery';
 	import { Swipe, SwipeItem } from 'mint-ui'
 	export default {
 		name:"index",
 		data(){			
-			return {	
-				    payload :0,
+			return {
+					show0:false,
+					minshow0:false,
+					hour:24,
+					min:0,
+					second:0,
+					show:false,
+				  payload :0,
 					isselect:false,
 					mygass:[],
 					dataindex:[{
@@ -191,7 +218,14 @@
 					}],										
 			}			
 		},
-		methods:{		
+		methods:{	
+				
+
+			handlegotop(){
+				$('body').stop().animate({
+						'scrollTop':'0px'
+				},300)
+			},
 			handlechange(){
 			
 				        if(this.payload==27){
@@ -219,9 +253,12 @@
      		mybooklist,
      		bookul,
      		appheader,
-     		gassul
+     		gassul,
+     		adv
   		},
   		computed:{
+				
+			
 			booklist(){
 				let data = this.$store.state.booklist.booklist;
 				return [...data]  					
@@ -253,23 +290,52 @@
 			Quadratic(){
 				let data = this.$store.state.booklist.Quadratic;				
 				this.mygass  = this.$store.getters.filter(0)
-//				if(this.mygass[0]==undefined){
-//					this.mygass  = this.$store.getters.filter(0) 
-//				}
 				return [...data]  					
-			}
-						
-  		},
-  		
+		}				
+	  	},  	
+	  	created(){
+	  		
+	  	},
 		mounted(){
-			
-			
+			$('body').on('scroll',function(){
+				if($('body').scrollTop()>=700){
+					
+					this.show = true
+				}else{
+					this.show = false
+				} 
+			}.bind(this))
+			setInterval(function(){					
+						this.second --
+						if(this.second<10){							
+							this.show0=true
+						}					
+						if(this.second<0){
+							if(this.min==10){
+								this.minshow0=true
+							}
+								this.show0=false
+								this.min = this.min-1;
+								this.second = 59							
+						}
+						if(this.min<0){
+							this.minshow0 = false
+							this.hour = this.hour-1;
+							this.min = 59
+						}
+				}.bind(this),1000)
 		},
+		updated(){
 		
+		},
+		watch(){
+			
+		}
 
 	}
 </script>
 <style lang="scss" scoped>
 	@import "../style/app";
-
+	
 </style>
+

@@ -1,6 +1,6 @@
 <template>
 	<div class="bookulmax">
-		<div class="bookulli" v-for="(bookul,index) of bookul" :key='index'>
+		<div class="bookulli" v-if="bookul" v-for="(bookul,index) of bookul" :key='index'>
 			<div class="bookulimg">
 				<img :src="bookul.bookimg"/>
 			</div>
