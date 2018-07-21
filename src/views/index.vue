@@ -39,7 +39,7 @@
 		</div>							
 		<div class="bookscroll" style="overflow: hidden;">
 			<div class="bookscrollheader">
-				<h3>热门小说</h3><span>起点编辑推荐</span>
+				<h3>热门小说</h3><span>起点编辑推荐</span><span class="more">更多></span>
 			</div>
 		<mybooklist :booklist = 'booklist'/>
 		</div>
@@ -58,28 +58,37 @@
 				  <i v-if="show0">0</i>{{second}}
 				</span>
 				</span>
+				<span class="more">更多></span>
 			</div>
 		   <mybooklist isfree='true' :booklist = 'booklist2'/>
 		</div>	
 		<div class="bookscroll" style="overflow: hidden; margin-top: 20px; height: 2.3rem;">
 			<div class="bookscrollheader">
 				<h3>排行榜</h3><span class="more">更多></span>
-			</div>
-			<div class="select">
-				<div class="Rankingselect1"><span>
-					热销榜
-				</span></div>
-				<div class="Rankingselect1"><span>
-					风云榜
-				</span></div>
-				<div class="Rankingselect1"><span>
-					签约榜
-				</span></div>
-				<div class="Rankingselect1"><span>
-					推荐榜
-				</span></div>
-			</div>
-		   <mybooklist isrank='true' :booklist = 'booklist3'/>
+			</div>		
+				<mt-navbar v-model="selected" >
+						<mt-tab-item id="1" >热销榜</mt-tab-item>
+						<mt-tab-item id="2" >风云榜</mt-tab-item>
+						<mt-tab-item id="3" >签约榜</mt-tab-item>
+						<mt-tab-item id="4" >推荐榜</mt-tab-item>
+					</mt-navbar>
+					<!--<mybooklist isrank='true' :booklist = 'booklist3'/>-->
+
+					<mt-tab-container v-model="selected">
+						<mt-tab-container-item id="1">
+							<mybooklist isrank='true' :booklist = 'booklist3'/>
+						</mt-tab-container-item>
+						<mt-tab-container-item id="2">
+							<mybooklist isrank='true' :booklist = 'booklist2'/>
+						</mt-tab-container-item>
+						<mt-tab-container-item id="3">
+							<mybooklist isrank='true' :booklist = 'booklist'/>
+						</mt-tab-container-item>
+						<mt-tab-container-item id="4">
+							<mybooklist isrank='true' :booklist = 'booklist4'/>
+						</mt-tab-container-item>
+					</mt-tab-container>
+		  <!-- <mybooklist isrank='true' :booklist = 'booklist3'/>-->
 		</div>
 		<div class="avd"> 
 			<img src="https://qidian.qpic.cn/qidian_common/349573/0f75fc58cca1708aacc746fe09e0153e/0" />
@@ -104,33 +113,44 @@
 			<div class="bookscrollheader ">
 				<h3>分类推荐</h3><span>频道主编推荐</span><span class="more">更多></span>
 			</div>
-			<div class="select">
-				<div class="Rankingselect1 active"><span>
-					玄幻奇幻
-				</span></div>
-				<div class="Rankingselect1"><span>
-					武侠仙侠
-				</span></div>
-				<div class="Rankingselect1"><span>
-					都市职场
-				</span></div>
+		
 				
-			</div>
-		   <mybooklist  :booklist = 'classification1'/>
-		   <div class="select" style="margin-top: .1rem; ">
-				<div class="Rankingselect1 active"><span>
-					历史军事
-				</span></div>
-				<div class="Rankingselect1"><span>
-					游戏体育
-				</span></div>
-				<div class="Rankingselect1"><span>
-					科幻灵异
-				</span></div>
-				
-			</div>
-		   <mybooklist  :booklist = 'classification2'/>
-		   
+					<mt-navbar v-model="selected2" >
+										<mt-tab-item id="1" >玄幻奇幻</mt-tab-item>
+										<mt-tab-item id="2" >武侠仙侠</mt-tab-item>
+										<mt-tab-item id="3" >都市职场</mt-tab-item>
+									</mt-navbar>
+													
+									<mt-tab-container v-model="selected2">
+										<mt-tab-container-item id="1">
+										<mybooklist  :booklist = 'classification1'/>
+										</mt-tab-container-item>
+										<mt-tab-container-item id="2">
+											<mybooklist  :booklist = 'classification2'/>
+										</mt-tab-container-item>
+										<mt-tab-container-item id="3">
+										<mybooklist  :booklist = 'classification1'/>
+										</mt-tab-container-item>
+									</mt-tab-container>
+						 
+						
+		   <mt-navbar v-model="selected3"  style= 'margin-top: 10px;'>
+		   					<mt-tab-item id="1" >历史军事</mt-tab-item>
+		   					<mt-tab-item id="2" >游戏体育</mt-tab-item>
+		   					<mt-tab-item id="3" >科幻灵异</mt-tab-item>
+		   				</mt-navbar>
+		   								
+		   				<mt-tab-container v-model="selected3">
+		   					<mt-tab-container-item id="1">
+		   					<mybooklist  :booklist = 'classification2'/>
+		   					</mt-tab-container-item>
+		   					<mt-tab-container-item id="2">
+		   						<mybooklist  :booklist = 'classification1'/>
+		   					</mt-tab-container-item>
+		   					<mt-tab-container-item id="3">
+		   					<mybooklist  :booklist = 'classification2'/>
+		   					</mt-tab-container-item>
+		   				</mt-tab-container>
 		   
 		   <div class="bookscroll" style="height: 4rem;margin-top: .2rem;">
 			<div class="bookscrollheader">
@@ -180,12 +200,16 @@
 	import appheader from '../components/appheader/appheader';
 	import adv from '../components/adv/adv';
 //	import $ from 'zepto';
-	
-	import { Swipe, SwipeItem } from 'mint-ui'
+	import { Navbar, TabItem } from 'mint-ui';
+	import { Swipe, SwipeItem } from 'mint-ui';
+	import { TabContainer, TabContainerItem } from 'mint-ui';
+	import  BScroll from 'better-scroll';
+
 	export default {
 		name:"index",
 		data(){			
 			return {
+				
 					show0:false,
 					minshow0:false,
 					hour:24,
@@ -195,6 +219,9 @@
 				  payload :0,
 					isselect:false,
 					mygass:[],
+					selected: '1',
+					selected2:'1',
+					selected3:'1',
 					dataindex:[{
 						indeximg:"background:url('https://qidian.gtimg.com/qdm/icon/common/sprite@2x.f5569.png')no-repeat   -125px -55px; ",
 						indexp:'分类',
@@ -218,7 +245,8 @@
 					}],										
 			}			
 		},
-		methods:{				
+		methods:{			
+			
 				handlegotop(){	
 				$.fn.scrollTo =function(options){
 		        var defaults = {
@@ -255,11 +283,10 @@
 	    },
 		    $('body').scrollTo({
 					toT:0
-				},300)
+				},100)
 			},
 			
-			handlechange(){
-			
+			handlechange(){			
 				        if(this.payload==27){
 				        	this.payload = -3
 				        }
@@ -275,13 +302,16 @@
 					
 				},
 			handelindex(path){
-				this.$router.push({path})
-				
+				this.$router.push({path})				
 			}
 		},
   		components:{
   			'mt-swipe': Swipe,
      		'mt-swipe-item': SwipeItem,
+				'mt-navbar':Navbar,
+				'mt-tab-item':TabItem,
+				'mt-tab-container':TabContainer,
+				'mt-tab-container-item': TabContainerItem,
      		mybooklist,
      		bookul,
      		appheader,
@@ -301,6 +331,10 @@
 			},
 			booklist3(){
 				let data = this.$store.state.booklist.booklist3;
+				return [...data]  					
+			},
+			booklist4(){
+				let data = this.$store.state.booklist.booklist4;
 				return [...data]  					
 			},
 			bookul1(){
@@ -359,9 +393,16 @@
 			
 		
 		}
-	
-		
-
+// 		,
+// 		watch:{
+// 				selected:function(val, oldVal){
+// 				new BScroll('#'+oldVal,{
+// 											scrollX:true
+// 										})
+// 			}	
+// 		
+// 
+// 	}
 	}
 </script>
 <style lang="scss" scoped>

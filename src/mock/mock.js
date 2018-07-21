@@ -1,4 +1,4 @@
-
+const booklist4 = require('./booklist4.json') 
 const booklist3 = require('./booklist3.json') 
 const booklist = require('./booklist.json') 
 const booklist2 = require('./booklist2.json') 
@@ -11,6 +11,7 @@ const Quadratic = require('./Quadratic.json')
 const gass = require('./gass')
 module.exports = function () {
   return {
+		"booklist4":booklist4,
     "booklist2":booklist2,
     "booklist3":booklist3,   
     "booklist":booklist,

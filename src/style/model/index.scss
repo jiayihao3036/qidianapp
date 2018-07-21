@@ -113,26 +113,44 @@
    .bookscroll{  
        padding-top: .05rem;   
        width: 100%;
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
        height: 2rem;
        background-color: white;
-       .select{
+			 .mint-tab-container-item{
+				 overflow: hidden;
+			 }
+       .mint-navbar{
            height: .3rem;
            width: 3.4rem;
            @include flexbox();
            margin: 0 auto;
            margin-bottom:.2rem ;
            background-color: white;
-           .Rankingselect1{
+           .mint-tab-item{
                height: 100%;
                @include flex();
                @include border(1px,#ed424b,solid,3px);
                text-align: center;
                line-height: .3rem;
                color: #ed424b;
+							 padding-top: 10px;
+							 
            }
-           .active{
+           .is-selected{
            background-color: #ed424b;
            color: white;
+					 border-bottom: transparent;
        }
        }
        

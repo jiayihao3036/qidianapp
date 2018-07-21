@@ -47,19 +47,19 @@
 		mounted(){
 			this.id = this.getRandom()
 			//this.id 改变会出发页面重绘但是不在执行mounted
-				this.$nextTick(function(){
-					new BScroll('#list-'+this.id,{
-						scrollX:true
-					})
-				})
+ 				this.$nextTick(function(){
+ 				new BScroll('#list-'+this.id,{
+											scrollX:true
+										})
+ 				})
+				
+						
+				
+		}	
 		}
-//		watch:{
-//			loading(){
-//				
-//			}		
-//		}
+	
 		
-	}
+	
 	
 </script>
 
