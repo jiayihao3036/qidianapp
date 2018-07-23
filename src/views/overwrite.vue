@@ -61,11 +61,14 @@
 <style lang="scss" scoped>
     @import "../style/usage/core/reset";
     .overwrite{
+				
         background-color: #f0f1f2; 
         width: 100%;
         overflow-y: scroll;
         @include flexbox();
         @include flex-direction(column);
+				position:absolute;
+				top:0
     }
     .bookscroll {
         width: 100%;

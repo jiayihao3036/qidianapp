@@ -1,13 +1,47 @@
-// @font-face {font-family: "iconfont";
-//        src: url('iconfont.eot'); /* IE9*/
-//        src: url('iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
-//        url('iconfont.woff') format('woff'), /* chrome, firefox */
-//        url('iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-//        url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
-//      }
 
 			
 .index{ 
+		.mengban{
+			position: absolute;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			opacity: 0.5;
+			z-index: 1000;
+		}
+		
+		.read{
+			padding-top: .2rem;
+			position: absolute;
+			text-align: center;
+			top: 0px;
+			right: 0;
+			width: 80%;
+			height: 100%;
+			background-color: white;		
+			z-index: 1001;
+			span{
+				font-size: 18px;
+				font-weight: 500;
+			}
+			div {
+				width: 100%;
+				img{
+					display: block;
+					margin: 1rem auto;
+				}
+				p{
+					color: #969ba3;
+				}
+			}			
+		}
+		.rightslide-enter-active, .rightslide-leave-active{
+			transition: transform .5s;
+		}
+		.rightslide-enter,.rightslide-leave-to /* .fade-leave-active below version 2.1.8 */ {
+			transform: translateX(100%);
+		}
     .foot{
            
             font-weight: 300;
@@ -30,7 +64,21 @@
 					width: .5rem;
 					height: .5rem;						
 		}
+		.readbefore{
+			padding-top: 5px;
+			position: fixed;
+			bottom: .7rem;
+			right: .1rem;
+			background-color: #ed424b;
+		  font-size: 14px;
+			line-height: .2rem;
+			border-radius:50%;
+			color: white;
+			text-align: center;		
+			width: .5rem;
+			height: .5rem;
 		
+		}
 		.fade-enter-active, .fade-leave-active {
 				transition: opacity .5s;
 			}
@@ -113,18 +161,6 @@
    .bookscroll{  
        padding-top: .05rem;   
        width: 100%;
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
        height: 2rem;
        background-color: white;
 			 .mint-tab-container-item{

@@ -1,6 +1,15 @@
 <template>
+	
 	<div class="index" >
-
+		<div class="mengban" v-if="showmengban" @click="ifmengban"></div>
+		<transition name='rightslide'>
+		<div class= "read" v-if="showmengban">
+			<span>最近阅读</span>
+			<div><img src="https://qidian.gtimg.com/qdm/img/book-cover.c977e.svg"/>
+			<p>暂无记录</p>
+			</div>
+		</div>
+		</transition>
 	<appheader />
 		<div class="indexbanner">
 		
@@ -189,6 +198,11 @@
 						<i class="fa fa-chevron-up" aria-hidden="true"></i>
 				</div>
 			</transition>
+			
+				<div class="readbefore" @click="readbefore" >
+						<p>最近<br>阅读</p>
+				</div>
+			
 	</div>
 	
 </template>
@@ -209,7 +223,7 @@
 		name:"index",
 		data(){			
 			return {
-				
+					showmengban:false,
 					show0:false,
 					minshow0:false,
 					hour:24,
@@ -219,7 +233,7 @@
 				  payload :0,
 					isselect:false,
 					mygass:[],
-					selected: '1',
+					selected: '2',
 					selected2:'1',
 					selected3:'1',
 					dataindex:[{
@@ -246,7 +260,15 @@
 			}			
 		},
 		methods:{			
-			
+				
+				readbefore(){
+					this.showmengban=true
+				},
+				ifmengban(){
+				
+						this.showmengban = false
+				
+				},
 				handlegotop(){	
 				$.fn.scrollTo =function(options){
 		        var defaults = {
@@ -364,8 +386,7 @@
 	  	},
 		mounted(){
 			$('body').on('scroll',function(){
-				if($('body').scrollTop()>=700){
-					
+				if($('body').scrollTop()>=700){				
 					this.show = true
 				}else{
 					this.show = false
@@ -392,17 +413,15 @@
 				}.bind(this),1000)
 			
 		
-		}
-// 		,
-// 		watch:{
-// 				selected:function(val, oldVal){
-// 				new BScroll('#'+oldVal,{
-// 											scrollX:true
-// 										})
-// 			}	
-// 		
-// 
-// 	}
+		},
+		
+		watch:{
+				selected:function(val, oldVal){
+				
+			}	
+		
+
+	}
 	}
 </script>
 <style lang="scss" scoped>
