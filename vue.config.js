@@ -2,8 +2,11 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://qidian:3000',
-        changeOrigin: true
+        target: 'http://localhost:9000',
+        changeOrigin: true,
+				pathRewrite: {
+					'^/api':''
+				}
       }
     }
   }
