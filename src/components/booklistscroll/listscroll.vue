@@ -5,13 +5,14 @@
 						<div>
 							<span v-if='isfree'>限免</span>
 							<i v-if='isrank' class="fa fa-diamond"></i>
-							<span v-if='isrank' >
+							<span v-if='isrank'>
 									Top{{index+1}}								
 							</span>
 							<img :src='booklist.bookimg'/>
 						</div>	
 							<p>{{booklist.bookname}}</p>
 							<p>{{booklist.bookuser}}</p>
+							<p style="display: none;">{{myrefresh}}</p>
 					</div>
 				</div>
 			</div>	
@@ -31,7 +32,11 @@
 		  isrank:{
 		  	type:String,
 		  	required:false
-		  }
+		  },
+			myrefresh:{	
+				type:Number,
+				required:false
+			}
 		   
 		},
 		data(){
@@ -40,19 +45,26 @@
 			}
 		},
 		methods:{
+		
 			 getRandom(){
 			      return new Date().getTime() + Math.ceil(Math.random() * 1000)
 			    }
 		},
 		mounted(){
-			this.id = this.getRandom()
-			//this.id 改变会出发页面重绘但是不在执行mounted
+			this.id = this.getRandom()	
+			//this.id 改变会出发页面重绘但是不在执行mounted	
  				this.$nextTick(function(){
- 				new BScroll('#list-'+this.id,{
-											scrollX:true
-										})
- 				})
-			}	
+ 				this.myScroll = new BScroll('#list-'+this.id,{
+							scrollX:true
+						})
+ 				})	
+				
+			},
+		updated(){
+				if(this.myrefresh>0){
+					this.myScroll.refresh()
+				}
+			}
 		}
 	
 		

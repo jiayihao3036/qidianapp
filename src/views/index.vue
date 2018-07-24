@@ -1,5 +1,4 @@
 <template>
-	
 	<div class="index" >
 		<div class="mengban" v-if="showmengban" @click="ifmengban"></div>
 		<transition name='rightslide'>
@@ -71,7 +70,7 @@
 			</div>
 		   <mybooklist isfree='true' :booklist = 'booklist2'/>
 		</div>	
-		<div class="bookscroll" style="overflow: hidden; margin-top: 20px; height: 2.3rem;">
+		<div class="bookscroll" style="overflow: hidden; margin-top: 20px; height: 2.5rem;">
 			<div class="bookscrollheader">
 				<h3>排行榜</h3><span class="more">更多></span>
 			</div>		
@@ -85,16 +84,16 @@
 
 					<mt-tab-container v-model="selected">
 						<mt-tab-container-item id="1">
-							<mybooklist isrank='true' :booklist = 'booklist3'/>
+							<mybooklist isrank='true' :booklist = 'booklist3'  :myrefresh='myrefresh' />
 						</mt-tab-container-item>
 						<mt-tab-container-item id="2">
-							<mybooklist isrank='true' :booklist = 'booklist2'/>
+							<mybooklist isrank='true' :booklist = 'booklist2'  :myrefresh='myrefresh'/>
 						</mt-tab-container-item>
 						<mt-tab-container-item id="3">
-							<mybooklist isrank='true' :booklist = 'booklist'/>
+							<mybooklist isrank='true' :booklist = 'booklist' :myrefresh='myrefresh'/>
 						</mt-tab-container-item>
 						<mt-tab-container-item id="4">
-							<mybooklist isrank='true' :booklist = 'booklist4'/>
+							<mybooklist isrank='true' :booklist = 'booklist4' :myrefresh='myrefresh'/>
 						</mt-tab-container-item>
 					</mt-tab-container>
 		  <!-- <mybooklist isrank='true' :booklist = 'booklist3'/>-->
@@ -132,13 +131,13 @@
 													
 									<mt-tab-container v-model="selected2">
 										<mt-tab-container-item id="1">
-										<mybooklist  :booklist = 'classification1'/>
+										<mybooklist  :booklist = 'classification1'  :myrefresh='myrefresh'/>
 										</mt-tab-container-item>
 										<mt-tab-container-item id="2">
-											<mybooklist  :booklist = 'classification2'/>
+											<mybooklist  :booklist = 'classification2'  :myrefresh='myrefresh'/>
 										</mt-tab-container-item>
 										<mt-tab-container-item id="3">
-										<mybooklist  :booklist = 'classification1'/>
+										<mybooklist  :booklist = 'classification1'  :myrefresh='myrefresh'/>
 										</mt-tab-container-item>
 									</mt-tab-container>
 						 
@@ -151,13 +150,13 @@
 		   								
 		   				<mt-tab-container v-model="selected3">
 		   					<mt-tab-container-item id="1">
-		   					<mybooklist  :booklist = 'classification2'/>
+		   					<mybooklist  :booklist = 'classification2'  :myrefresh='myrefresh' />
 		   					</mt-tab-container-item>
 		   					<mt-tab-container-item id="2">
-		   						<mybooklist  :booklist = 'classification1'/>
+		   						<mybooklist  :booklist = 'classification1'  :myrefresh='myrefresh'/>
 		   					</mt-tab-container-item>
 		   					<mt-tab-container-item id="3">
-		   					<mybooklist  :booklist = 'classification2'/>
+		   					<mybooklist  :booklist = 'classification2'  :myrefresh='myrefresh'/>
 		   					</mt-tab-container-item>
 		   				</mt-tab-container>
 		   
@@ -217,12 +216,14 @@
 	import { Navbar, TabItem } from 'mint-ui';
 	import { Swipe, SwipeItem } from 'mint-ui';
 	import { TabContainer, TabContainerItem } from 'mint-ui';
-	import  BScroll from 'better-scroll';
+	import BScroll from 'better-scroll';
 
+	
 	export default {
 		name:"index",
 		data(){			
 			return {
+					myrefresh:0,
 					showmengban:false,
 					show0:false,
 					minshow0:false,
@@ -233,7 +234,7 @@
 				  payload :0,
 					isselect:false,
 					mygass:[],
-					selected: '2',
+					selected: '1',
 					selected2:'1',
 					selected3:'1',
 					dataindex:[{
@@ -264,8 +265,7 @@
 				readbefore(){
 					this.showmengban=true
 				},
-				ifmengban(){
-				
+				ifmengban(){				
 						this.showmengban = false
 				
 				},
@@ -340,8 +340,7 @@
      		gassul,
      		adv
   		},
-  		computed:{
-				
+  		computed:{	
 			
 			booklist(){
 				let data = this.$store.state.booklist.booklist;
@@ -382,7 +381,7 @@
 		}				
 	  	},  	
 	  	created(){
-	  		
+	  	
 	  	},
 		mounted(){
 			$('body').on('scroll',function(){
@@ -410,22 +409,27 @@
 							this.hour = this.hour-1;
 							this.min = 59
 						}
-				}.bind(this),1000)
-			
-		
+				}.bind(this),1000)		
 		},
 		
 		watch:{
-				selected:function(val, oldVal){
-				
-			}	
-		
-
+				selected:function(val, oldVal){	
+						console.log(this.myrefresh)
+						this.myrefresh=1+this.myrefresh
+						
+			},
+				selected2:function(val, oldVal){						
+						this.myrefresh=1+this.myrefresh
+						
+			},
+				selected3:function(val, oldVal){							
+						this.myrefresh=1+this.myrefresh
+						
+			}
 	}
 	}
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped="scoped">
 	@import "../style/app";
-	
 </style>
 

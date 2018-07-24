@@ -17,14 +17,14 @@ export default new Vuex.Store({
 					Quadratic:[],
 					gass:[]
 		},
-		scrollId:''
+		scrollarr:[]
+	
   },
   mutations: {
 			setdata(state,payload){
 				state.booklist.booklist = payload[0].data.data;
 				state.booklist.booklist2 = payload[1].data.data;
-				state.booklist.booklist3 = payload[2].data.data;
-				
+				state.booklist.booklist3 = payload[2].data.data;				
 				state.booklist.bookul1 = payload[3].data.data;
 				state.booklist.bookul2 = payload[4].data.data;
 				state.booklist.classification1=payload[5].data.data;
@@ -43,26 +43,25 @@ export default new Vuex.Store({
   		} 
   		return arr
   	},
-		busId:(state)=>(payload)=>{
-			state.scrollId = payload
+		scrollarr:(state)=>(payload)=>{
+			state.scrollarr.push(payload) 
 		}
   },
   actions: {
 			getdata({commit}){
-				const booklist = $.get('http://localhost:9000/booklist').then((result)=>result)
-				const booklist2 = $.get('http://localhost:9000/booklist2').then((result)=>result)
-				const booklist3 = $.get('http://localhost:9000/booklist3').then((result)=>result)
-				
+				const booklist = $.get('/api/booklist').then((result)=>result)
+				const booklist2 = $.get('/api/booklist2').then((result)=>result)
+				const booklist3 = $.get('/api/booklist3').then((result)=>result)				
 				const bookul1 =
-$.get('http://localhost:9000/bookul1').then((result)=>result)
+$.get('/api/bookul1').then((result)=>result)
 				const bookul2 = 
-$.get('http://localhost:9000/bookul2').then((result)=>result)
-				const classification1 = $.get('http://localhost:9000/classification1').then((result)=>result)
-				const classification2 = $.get('http://localhost:9000/classification2').then((result)=>result)
-				const Quadratic = $.get('http://localhost:9000/Quadratic').then((result)=>result)
+$.get('/api/bookul2').then((result)=>result)
+				const classification1 = $.get('/api/classification1').then((result)=>result)
+				const classification2 = $.get('/api/classification2').then((result)=>result)
+				const Quadratic = $.get('/api/Quadratic').then((result)=>result)
 				const gass = 
-				$.get('http://localhost:9000/gass').then((result)=>result)	
-				const booklist4 = $.get('http://localhost:9000/booklist4').then((result)=>result)
+				$.get('/api/gass').then((result)=>result)	
+				const booklist4 = $.get('/api/booklist4').then((result)=>result)
 				Promise.all([booklist,booklist2,booklist3,bookul1,bookul2,classification1,classification2,Quadratic,gass
 				,booklist4])
 			.then((result)=>{
