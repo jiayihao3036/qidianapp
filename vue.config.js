@@ -7,7 +7,11 @@ module.exports = {
 				pathRewrite: {
 					'^/api':''
 				}
-      }
+      },
+			'/majax': {
+                target: 'https://m.qidian.com',
+                changeOrigin: true
+            }
     }
   }
 }

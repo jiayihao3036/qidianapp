@@ -6,6 +6,7 @@ import Free from './views/Free.vue'
 import Okami from './views/Okami.vue'
 import ranking from './views/ranking.vue'
 import overwrite from './views/overwrite.vue'
+import dashenfinishlist from './views/dashenfinishlist.vue'
 
 Vue.use(Router)
 
@@ -44,6 +45,11 @@ export default new Router({
     	path:'/ranking',
     	name:'ranking',
     	component:ranking
-    }
+    },
+		{
+			path: '/dashenfinishlist',
+			name: 'dashenfinishlist',
+			component: dashenfinishlist
+			}
   ]
 })

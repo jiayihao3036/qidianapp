@@ -70,7 +70,7 @@
 			</div>
 		   <mybooklist isfree='true' :booklist = 'booklist2'/>
 		</div>	
-		<div class="bookscroll" style="overflow: hidden; margin-top: 20px; height: 2.5rem;">
+		<div class="bookscroll" style="overflow: hidden; margin-top: 20px; height: 2.3rem;">
 			<div class="bookscrollheader">
 				<h3>排行榜</h3><span class="more">更多></span>
 			</div>		
@@ -84,10 +84,10 @@
 
 					<mt-tab-container v-model="selected">
 						<mt-tab-container-item id="1">
-							<mybooklist isrank='true' :booklist = 'booklist3'  :myrefresh='myrefresh' />
+							<mybooklist isrank='true' :booklist = 'booklist3' :myrefresh='myrefresh' />
 						</mt-tab-container-item>
 						<mt-tab-container-item id="2">
-							<mybooklist isrank='true' :booklist = 'booklist2'  :myrefresh='myrefresh'/>
+							<mybooklist isrank='true' :booklist = 'booklist2' :myrefresh='myrefresh'/>
 						</mt-tab-container-item>
 						<mt-tab-container-item id="3">
 							<mybooklist isrank='true' :booklist = 'booklist' :myrefresh='myrefresh'/>
@@ -131,13 +131,13 @@
 													
 									<mt-tab-container v-model="selected2">
 										<mt-tab-container-item id="1">
-										<mybooklist  :booklist = 'classification1'  :myrefresh='myrefresh'/>
+										<mybooklist  :booklist = 'classification1' :myrefresh='myrefresh'/>
 										</mt-tab-container-item>
 										<mt-tab-container-item id="2">
-											<mybooklist  :booklist = 'classification2'  :myrefresh='myrefresh'/>
+											<mybooklist  :booklist = 'classification2' :myrefresh='myrefresh'/>
 										</mt-tab-container-item>
 										<mt-tab-container-item id="3">
-										<mybooklist  :booklist = 'classification1'  :myrefresh='myrefresh'/>
+										<mybooklist  :booklist = 'classification1' :myrefresh='myrefresh'/>
 										</mt-tab-container-item>
 									</mt-tab-container>
 						 
@@ -150,13 +150,13 @@
 		   								
 		   				<mt-tab-container v-model="selected3">
 		   					<mt-tab-container-item id="1">
-		   					<mybooklist  :booklist = 'classification2'  :myrefresh='myrefresh' />
+		   					<mybooklist  :booklist = 'classification2' :myrefresh='myrefresh'/>
 		   					</mt-tab-container-item>
 		   					<mt-tab-container-item id="2">
-		   						<mybooklist  :booklist = 'classification1'  :myrefresh='myrefresh'/>
+		   						<mybooklist  :booklist = 'classification1' :myrefresh='myrefresh'/>
 		   					</mt-tab-container-item>
 		   					<mt-tab-container-item id="3">
-		   					<mybooklist  :booklist = 'classification2'  :myrefresh='myrefresh'/>
+		   					<mybooklist  :booklist = 'classification2' :myrefresh='myrefresh'/>
 		   					</mt-tab-container-item>
 		   				</mt-tab-container>
 		   
@@ -413,18 +413,14 @@
 		},
 		
 		watch:{
-				selected:function(val, oldVal){	
-						console.log(this.myrefresh)
-						this.myrefresh=1+this.myrefresh
-						
+				selected:function(val, oldVal){					 
+						this.myrefresh=1+this.myrefresh					
 			},
-				selected2:function(val, oldVal){						
-						this.myrefresh=1+this.myrefresh
-						
+				selected2:function(val, oldVal){					 
+						this.myrefresh=1+this.myrefresh					
 			},
-				selected3:function(val, oldVal){							
-						this.myrefresh=1+this.myrefresh
-						
+				selected3:function(val, oldVal){					 
+						this.myrefresh=1+this.myrefresh					
 			}
 	}
 	}
